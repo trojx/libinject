@@ -1863,14 +1863,49 @@ fail:
 }
 
 
-static int _wrap_add_whitelist(lua_State* L) {
+static int _wrap_sqli_pop_whitelist(lua_State* L) {
   int SWIG_arg = 0;
   char *arg1 = (char *) 0 ;
   
-  SWIG_check_num_args("libinjection_add_whitelist",1,1)
-  if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("libinjection_add_whitelist",1,"char *");
+  SWIG_check_num_args("libinjection_sqli_pop_whitelist",1,1)
+  if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("libinjection_sqli_pop_whitelist",1,"char const *");
   arg1 = (char *)lua_tostring(L, 1);
-  libinjection_add_whitelist(arg1);
+  libinjection_sqli_pop_whitelist((char const *)arg1);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_sqli_put_whitelist(lua_State* L) {
+  int SWIG_arg = 0;
+  char *arg1 = (char *) 0 ;
+  
+  SWIG_check_num_args("libinjection_sqli_put_whitelist",1,1)
+  if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("libinjection_sqli_put_whitelist",1,"char *");
+  arg1 = (char *)lua_tostring(L, 1);
+  libinjection_sqli_put_whitelist(arg1);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_sqli_clear_whitelist(lua_State* L) {
+  int SWIG_arg = 0;
+  
+  SWIG_check_num_args("libinjection_sqli_clear_whitelist",0,0)
+  libinjection_sqli_clear_whitelist();
   
   return SWIG_arg;
   
@@ -2850,7 +2885,9 @@ fail:
 static const struct luaL_Reg swig_commands[] = {
     { "version", _wrap_version},
     { "sqli", _wrap_sqli},
-    { "add_whitelist", _wrap_add_whitelist},
+    { "sqli_pop_whitelist", _wrap_sqli_pop_whitelist},
+    { "sqli_put_whitelist", _wrap_sqli_put_whitelist},
+    { "sqli_clear_whitelist", _wrap_sqli_clear_whitelist},
     { "xss", _wrap_xss},
     { "sqli_get_token", _wrap_sqli_get_token},
     { "sqli_init", _wrap_sqli_init},

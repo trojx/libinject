@@ -204,7 +204,9 @@ const char* libinjection_version(void);
 /**
  *
  */
-void libinjection_add_whitelist(char* data);
+void libinjection_sqli_put_whitelist(char* data);
+void libinjection_sqli_clear_whitelist();
+void libinjection_sqli_pop_whitelist(const char* data);
 void libinjection_sqli_init(struct libinjection_sqli_state* sql_state,
                             const char* s, size_t slen,
                             int flags);

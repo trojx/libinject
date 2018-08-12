@@ -48,8 +48,9 @@ const char* libinjection_version(void);
  * \return 1 if SQLi, 0 if benign.  fingerprint will be set or set to empty string.
  */
 int libinjection_sqli(const char* s, size_t slen, char fingerprint[]);
-void libinjection_add_whitelist(char* data);
-
+void libinjection_sqli_pop_whitelist(const char* data);
+void libinjection_sqli_put_whitelist(char* data);
+void libinjection_sqli_clear_whitelist();
 /** ALPHA version of xss detector.
  *
  * NOT DONE.
