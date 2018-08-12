@@ -1273,7 +1273,7 @@ void insert_fp( char whitelist[][8], char* fp)
 		}
 	}
 }
-void libinjection_pop_whitelist(char* data)
+void libinjection_pop_whitelist(const char* data)
 {
 			 sfilter sf;
 			 int i = 0, j = 0;
