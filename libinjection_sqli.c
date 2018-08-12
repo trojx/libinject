@@ -1257,6 +1257,10 @@ int libinjection_sqli_tokenize(struct libinjection_sqli_state * sf)
 }
 /***********************************************************/
 char g_whitelist[g_whitelist_length][8] = {{0}};
+void libinjection_sqli_clear_whitelist()
+{
+	memset(g_whitelist, 0, g_whitelist_length * 8);
+}
 void insert_fp( char whitelist[][8], char* fp)
 {
 	int i = 0;
@@ -1273,7 +1277,7 @@ void insert_fp( char whitelist[][8], char* fp)
 		}
 	}
 }
-void libinjection_pop_whitelist(const char* data)
+void libinjection_sqli_pop_whitelist(const char* data)
 {
 			 sfilter sf;
 			 int i = 0, j = 0;
@@ -1293,7 +1297,7 @@ void libinjection_pop_whitelist(const char* data)
 		    	}
 		    }
 }
-void libinjection_add_whitelist(char* data)
+void libinjection_sqli_put_whitelist(char* data)
 {
 		 sfilter sf;
 		 int i = 0;
